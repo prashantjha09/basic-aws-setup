@@ -1,0 +1,8 @@
+initial-setup/terraform.tfstate
+initial-setup/.terraform.lock.hcl
+initial-setup/.terraform/*
+
+dev-environment/terraform.tfstate
+dev-environment/.terraform.lock.hcl
+dev-environment/.terraform/*
+

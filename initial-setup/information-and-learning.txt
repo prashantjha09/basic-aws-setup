@@ -1,0 +1,2 @@
+v.v.i
+* If you're using Terraform's dynamic block with for_each, you can't directly use each.value within the block. Instead, you need to reference it outside of the block. Here's how you can achieve that:
