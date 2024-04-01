@@ -1,6 +1,6 @@
 resource "aws_instance" "bastion" {
     ami = "ami-0c7217cdde317cfec"
-    instance_type = "t2.small"
+    instance_type = "t2.nano"
     vpc_security_group_ids = [aws_security_group.ec2-sg.id]
     key_name = "aws-learning-account"
     subnet_id       = aws_subnet.kubernets-public-subnet[0].id
@@ -17,12 +17,12 @@ resource "aws_instance" "bastion" {
      "sudo apt update -y ",
      "sudo apt install nginx -y"
    ]
-   on_failure = fail
+   on_failure = continue
  }    
 }
 
 resource "aws_instance" "master" {
-    ami = "ami-0c7217cdde317cfec"
+    ami = "ami-0712b30d40de8a338"
     instance_type = "t2.small"
     vpc_security_group_ids = [aws_security_group.ec2-sg.id]
     key_name = "aws-learning-account"
@@ -43,10 +43,10 @@ resource "aws_instance" "master" {
    inline = [
     # Updating with the latest command for Amazon Linux machine
      "sudo apt update -y ",
-     "sudo apt install nginx -y",
-     "sudo apt  install awscli -y"
-
+    #  "sudo apt-get upgrade -y"
+    #  "sudo apt install nginx -y",
+    #  "sudo apt  install awscli -y"
    ]
-   on_failure = fail
+   on_failure = continue
 }
     }

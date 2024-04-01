@@ -19,6 +19,7 @@ resource "aws_subnet" "kubernets-public-subnet" {
   vpc_id     = aws_vpc.kubernets-vpc.id
   cidr_block = var.public_subnet[count.index]
   map_public_ip_on_launch=true
+  availability_zone = count.index == 0 ? "us-east-1a" : "us-east-1b"
   
 
 
@@ -35,6 +36,7 @@ resource "aws_subnet" "kubernets-private-subnet" {
   vpc_id     = aws_vpc.kubernets-vpc.id
   cidr_block = var.private_subnet[count.index]
   map_public_ip_on_launch=false
+  availability_zone = count.index == 0 ? "us-east-1a" : "us-east-1b"
   
 
   tags = {
